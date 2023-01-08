@@ -113,9 +113,7 @@ func handle_option(opt int, todos *[]Todo) {
 			}
 			idx++
 		}
-		if idx < len(*todos) {
-			remove_todo(todos, idx)
-		}
+		remove_todo(todos, idx)
 	}
 	apply_file("data", *todos)
 }
