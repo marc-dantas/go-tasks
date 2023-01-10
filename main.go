@@ -114,8 +114,8 @@ func handle_option(opt int, todos *[]Todo) {
 	} else if opt == 3 {
 		var idx int
 		id := geti("Task ID: ")
-		for i := range *todos {
-			if i == id {
+		for _, x := range *todos {
+			if x.Id == id {
 				break
 			}
 			idx++
