@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"bufio"
 	"strings"
 )
 
@@ -17,10 +18,16 @@ type Todo struct {
 }
 
 func gets(prompt string) string {
-	var x string
+	scanner := bufio.NewScanner(os.Stdin)
 	fmt.Print(prompt)
-	fmt.Scanln(&x)
-	return x
+	var line string
+	if scanner.Scan() {
+		line = scanner.Text()
+	}
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+	return line
 }
 
 func geti(prompt string) int {
